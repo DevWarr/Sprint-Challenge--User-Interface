@@ -69,8 +69,10 @@ p {
     line-height: 1.4;
 }
 
+
+/* width -> max-width to allow scaling */
 .container {
-    width: 800px;
+    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -92,6 +94,7 @@ p {
 
 .top-content img {
     width: 100%;
+    height: auto;
     margin: 15px 0 20px;
 }
 
@@ -127,6 +130,8 @@ p {
 
 .middle-content .boxes .box {
     width: 12.5%;
+    /* Added min-width so boxers don't squish when resizing */
+    min-width: 100px;
     height: 100px;
     background: black;
     margin: 20px 2.5%;
@@ -198,6 +203,15 @@ p {
     border: 2px solid black;
     border-radius: 10px;
     margin: 20px 0;
+    /* Transition Animation */
+    transition: color 0.1s linear;
+    transition: background 0.1s linear;
+}
+
+.cards__card a:hover {
+    background: black;
+    color: white;
+    border: 2px solid #111111;
 }
 
 
@@ -269,3 +283,91 @@ footer nav a {
     color: white;
     text-decoration: none;
 }
+
+@media only screen and (max-width: 600px) {
+    
+    
+    /* Header Changes */
+    header nav {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+    
+    header nav a {
+        background: lightblue;
+        padding: 10px;
+        margin: 5px 0;
+        box-sizing: border-box;
+        width: 100%;
+        text-align: center;
+        transition: background 0.1s linear;
+    }
+    
+    header nav a:hover {
+        background: blue;
+    }
+    
+    /* top-content changes */
+    .top-content img {
+        /* I wanted the image to be at a set height, with only the left and right edges getting cropped out as the screen got smaller. I wasn't able to get teh desired effect. */
+/*        height: 160px;*/
+/*        width: auto;*/
+/*        overflow: hidden;*/
+        margin: inherit auto;
+        float: center;
+    }
+    
+    .top-content .text-container {
+        width: 90%;
+    }
+    
+    
+    /* Card Changes */
+    .cards__card {
+        width: 90%;
+    }
+    
+    /* bottom-content changes */
+    .bottom-content {
+        flex-wrap: wrap;
+        margin-bottom: 0;
+    }
+    
+    .bottom-content .text-container {
+        width: 90%;
+        margin-bottom: 40px;
+    }
+    
+    /* footer changes */
+    footer nav {
+        width: 100%;
+        padding: 20px 5%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    
+    /* Finally, to make the footer a single column */
+    footer nav {
+        flex-flow: column nowrap;
+        padding: 0px 0;
+    }
+    
+    footer nav a {
+        background: #222222;
+        width: 100%;
+        text-align: center;
+        padding: 5px 0;
+        margin: 3px;
+        transition: background 0.1s linear;
+    }
+    
+    footer nav a:hover {
+        background: gray;
+    }
+}
+
+
+
+
+
